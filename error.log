@@ -1,0 +1,57 @@
+[Tue Sep 05 15:45:07.066219 2023] [mpm_prefork:notice] [pid 667] AH00163: Apache/2.4.57 (Unix) PHP/8.2.10 configured -- resuming normal operations
+[Tue Sep 05 15:45:07.066297 2023] [core:notice] [pid 667] AH00094: Command line: '/opt/homebrew/opt/httpd/bin/httpd -D FOREGROUND'
+[Thu Sep 07 23:48:25.614039 2023] [mpm_prefork:notice] [pid 667] AH00169: caught SIGTERM, shutting down
+[Thu Sep 07 23:48:42.994150 2023] [mpm_prefork:notice] [pid 78642] AH00163: Apache/2.4.57 (Unix) PHP/8.2.10 configured -- resuming normal operations
+[Thu Sep 07 23:48:42.994332 2023] [core:notice] [pid 78642] AH00094: Command line: '/opt/homebrew/opt/httpd/bin/httpd -D FOREGROUND'
+[Sat Sep 09 20:12:32.147017 2023] [php:warn] [pid 83017] [client ::1:54188] PHP Warning:  Undefined variable $result in /Users/vedzevgn/localhost/index.php on line 252, referer: http://localhost/index.php?xCh=1&x=1&y=0.0000001&r=2
+[Sat Sep 09 20:12:32.147712 2023] [php:warn] [pid 83017] [client ::1:54188] PHP Warning:  Trying to access array offset on value of type null in /Users/vedzevgn/localhost/index.php on line 252, referer: http://localhost/index.php?xCh=1&x=1&y=0.0000001&r=2
+[Sun Sep 10 18:03:11.860192 2023] [mpm_prefork:notice] [pid 78642] AH00169: caught SIGTERM, shutting down
+[Sun Sep 10 18:03:58.225479 2023] [mpm_prefork:notice] [pid 690] AH00163: Apache/2.4.57 (Unix) PHP/8.2.10 configured -- resuming normal operations
+[Sun Sep 10 18:03:58.225836 2023] [core:notice] [pid 690] AH00094: Command line: '/opt/homebrew/opt/httpd/bin/httpd -D FOREGROUND'
+[Mon Sep 11 01:23:02.978215 2023] [php:warn] [pid 790] [client ::1:61904] PHP Warning:  A non-numeric value encountered in /Users/vedzevgn/localhost/index.php on line 46, referer: http://localhost/index.php?xCh=1&x=1&y=3&r=3
+[Mon Sep 11 01:23:02.979265 2023] [php:warn] [pid 790] [client ::1:61904] PHP Warning:  A non-numeric value encountered in /Users/vedzevgn/localhost/index.php on line 46, referer: http://localhost/index.php?xCh=1&x=1&y=3&r=3
+[Mon Sep 11 01:23:02.979520 2023] [php:warn] [pid 790] [client ::1:61904] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?xCh=1&x=1&y=3&r=3
+[Mon Sep 11 01:23:02.979542 2023] [php:warn] [pid 790] [client ::1:61904] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?xCh=1&x=1&y=3&r=3
+[Mon Sep 11 01:23:02.979551 2023] [php:warn] [pid 790] [client ::1:61904] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?xCh=1&x=1&y=3&r=3
+[Mon Sep 11 01:23:14.344462 2023] [php:warn] [pid 789] [client ::1:61905] PHP Warning:  A non-numeric value encountered in /Users/vedzevgn/localhost/index.php on line 46, referer: http://localhost/index.php
+[Mon Sep 11 01:23:14.344810 2023] [php:warn] [pid 789] [client ::1:61905] PHP Warning:  A non-numeric value encountered in /Users/vedzevgn/localhost/index.php on line 46, referer: http://localhost/index.php
+[Mon Sep 11 14:53:53.635765 2023] [php:warn] [pid 3759] [client ::1:57583] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:53.636281 2023] [php:warn] [pid 3759] [client ::1:57583] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:53.636302 2023] [php:warn] [pid 3759] [client ::1:57583] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:53.636313 2023] [php:warn] [pid 3759] [client ::1:57583] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:53.636322 2023] [php:warn] [pid 3759] [client ::1:57583] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:59.694686 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:59.694939 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:59.694953 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:59.694961 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:53:59.694969 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242, referer: http://localhost/index.php?x=-1&y=2&r=2
+[Mon Sep 11 14:54:02.099981 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:02.100345 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:02.100365 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:02.100373 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:02.100381 2023] [php:warn] [pid 2764] [client ::1:57636] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:10.938859 2023] [php:warn] [pid 2762] [client ::1:57739] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:10.939451 2023] [php:warn] [pid 2762] [client ::1:57739] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:10.939481 2023] [php:warn] [pid 2762] [client ::1:57739] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:10.939494 2023] [php:warn] [pid 2762] [client ::1:57739] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:10.939504 2023] [php:warn] [pid 2762] [client ::1:57739] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:17.327268 2023] [php:warn] [pid 3760] [client ::1:57805] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:17.327581 2023] [php:warn] [pid 3760] [client ::1:57805] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:17.327598 2023] [php:warn] [pid 3760] [client ::1:57805] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:17.327609 2023] [php:warn] [pid 3760] [client ::1:57805] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 14:54:17.327618 2023] [php:warn] [pid 3760] [client ::1:57805] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.088397 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.088919 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.088963 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.088972 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.088984 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.877262 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.877297 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.877311 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.877319 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:11.877325 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:12.810238 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:12.810500 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:12.810510 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:12.810518 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Mon Sep 11 15:09:12.810526 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
