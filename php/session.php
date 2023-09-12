@@ -35,19 +35,32 @@ function checkPoint($x, $y, $r)
     return (checkPointInSquare($x, $y, $r) || checkPointInArea($x, $y, $r) || checkPointInTriangle($x, $y, $r));
 }
 
+function checkY($y)
+{
+    if (!$y) {
+        return false;
+    } else if (is_nan($y)) {
+        return false;
+    } else if ($y >= -3 && $y <= 3) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["x"]) && isset($_GET["y"]) && isset($_GET["r"])) {
     $x = floatval($_GET["x"]);
     $y = floatval($_GET["y"]);
     $r = floatval($_GET["r"]);
     $time = $_GET["time"];
-
     if (is_numeric($x) && is_numeric($y) && is_numeric($r)) {
-        $startTime = microtime(true);
-        $result = checkPoint($x, $y, $r) ? "Попадает" : "Не попадает";
-        $scriptTime = (microtime(true) - $startTime) * pow(10, 6);
-        $_SESSION["results"][] = array("x" => $x, "y" => $y, "r" => $r, "result" => $result, "scriptTime" => $scriptTime, "time" => $time);
+        if (checkY($y)) {
+            $startTime = microtime(true);
+            $result = checkPoint($x, $y, $r) ? "Попадает" : "Не попадает";
+            $scriptTime = (microtime(true) - $startTime) * pow(10, 6);
+            $_SESSION["results"][] = array("x" => $x, "y" => $y, "r" => $r, "result" => $result, "scriptTime" => $scriptTime, "time" => $time);
+        }
     }
-
 }
 
 if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
