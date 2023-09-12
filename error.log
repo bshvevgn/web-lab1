@@ -55,3 +55,7 @@
 [Mon Sep 11 15:09:12.810510 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
 [Mon Sep 11 15:09:12.810518 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
 [Mon Sep 11 15:09:12.810526 2023] [php:warn] [pid 3759] [client ::1:60296] PHP Warning:  Undefined array key "scriptTime" in /Users/vedzevgn/localhost/index.php on line 242
+[Tue Sep 12 00:29:53.399687 2023] [php:error] [pid 36651] [client ::1:60931] script '/Users/vedzevgn/localhost/index.php' not found or unable to stat, referer: http://localhost/index.php?xCh=2&x=2&y=2&r=1.5
+[Tue Sep 12 00:49:43.039147 2023] [php:error] [pid 37596] [client ::1:49616] script '/Users/vedzevgn/localhost/index.php' not found or unable to stat, referer: http://localhost/index.html?xCh=-2&x=-2&y=1&r=1.5
+[Tue Sep 12 00:50:04.662142 2023] [php:error] [pid 37915] [client ::1:49645] script '/Users/vedzevgn/localhost/index.php' not found or unable to stat, referer: http://localhost/index.html?xCh=-2&x=-2&y=1&r=1.5
+[Tue Sep 12 00:53:06.045927 2023] [php:error] [pid 37973] [client ::1:50498] script '/Users/vedzevgn/localhost/index.php' not found or unable to stat, referer: http://localhost/index.html?xCh=-2&x=-2&y=1&r=1.5

@@ -1,62 +1,3 @@
-<?php
-session_start();
-
-function checkPointInSquare($x, $y, $r)
-{
-    if ($x >= 0 && $x <= $r && $y >= 0 && $y <= $r) {
-        return true;
-    }
-    return false;
-}
-
-function checkPointInArea($x, $y, $r)
-{
-    if ($x <= 0 && $y <= 0) {
-        if ($x <= $r && $y <= $r) {
-            if ($x * $x + $y * $y <= $r * $r) {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-function checkPointInTriangle($x, $y, $r)
-{
-    if ($x <= 0 && $y >= 0 && $y <= ($x / 2 + $r / 2)) {
-        return true;
-    }
-    return false;
-}
-
-
-function checkPoint($x, $y, $r)
-{
-    return (checkPointInSquare($x, $y, $r) || checkPointInArea($x, $y, $r) || checkPointInTriangle($x, $y, $r));
-}
-
-if ($_SERVER["REQUEST_METHOD"] === "GET" && isset($_GET["x"]) && isset($_GET["y"]) && isset($_GET["r"])) {
-    $x = floatval($_GET["x"]);
-    $y = floatval($_GET["y"]);
-    $r = floatval($_GET["r"]);
-
-    if (is_numeric($x) && is_numeric($y) && is_numeric($r)) {
-        $startTime = microtime(true);
-        $result = checkPoint($x, $y, $r) ? "Попадает" : "Не попадает";
-        $scriptTime = (microtime(true) - $startTime) * pow(10, 6);
-        $_SESSION["results"][] = array("x" => $x, "y" => $y, "r" => $r, "result" => $result, "scriptTime" => $scriptTime, "time" => date("H:i:s"));
-    }
-
-}
-
-if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
-    $_SESSION['results'] = array();
-    header('Location: index.php');
-    exit();
-}
-
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -74,15 +15,22 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
 
 <body>
     <div id="modalWindowBack" class="hiddenModalBack">
+        <div class="modalWindow closedModalWindow" id="internalErrorWindow">
+            <div class="closeButton" onClick="closeModalWindow('internalErrorWindow')"></div>
+            <div style="display: flex; flex-direction: row; align-items: center;">
+                <p class="subtitle">Внутренняя ошибка</p>
+            </div>
+            <p class="errorMessage">Произошла ошибка, пожалуйста, повторите попытку.</p>
+        </div>
         <div class="modalWindow closedModalWindow" id="incorrectValueWindow">
-            <div class="closeButton" id="incorrectValueWindowButton" onClick="closeModalWindow(this.id)"></div>
+            <div class="closeButton" onClick="closeModalWindow('incorrectValueWindow')"></div>
             <div style="display: flex; flex-direction: row; align-items: center;">
                 <p class="subtitle">Введено некорректное значение</p>
             </div>
-            <p id="errorMessage"></p>
+            <p class="errorMessage"></p>
         </div>
         <div class="modalWindow closedModalWindow" id="areasWindow">
-            <div class="closeButton" id="areasWindowButton" onClick="closeModalWindow(this.id)"></div>
+            <div class="closeButton" onClick="closeModalWindow('areasWindow')"></div>
             <div style="display: flex; flex-direction: row; align-items: center;">
                 <div class="verticalBox">
                     <p class="subtitle">Условие проверки</p>
@@ -90,19 +38,18 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
                     <div class="imageWrapper" style="background-image: url(images/areas.png)"></div>
                 </div>
             </div>
-            <p id="errorMessage"></p>
         </div>
         <div class="modalWindow closedModalWindow" id="clearTableWindow">
-            <div class="closeButton" id="clearTableWindowButton" onClick="closeModalWindow(this.id)"></div>
+            <div class="closeButton" onClick="closeModalWindow('clearTableWindow')"></div>
             <div style="display: flex; flex-direction: row; align-items: center;">
                 <p class="subtitle">Очистить результаты?</p>
             </div>
             <p>Вы действительно хотите очистить таблицу с результатами?</p>
             <div class="buttonsPanel">
-                <div class="button deleteButton" onclick="clearTable()">
+                <div class="button deleteButton" onclick="clearTable(); closeModalWindow('clearTableWindow');">
                     <p>Очистить</p>
                 </div>
-                <div class="button" id="clearTableWindowButton" onClick="closeModalWindow(this.id)">
+                <div class="button" id="clearTableWindowButton" onClick="closeModalWindow('clearTableWindow')">
                     <p>Отмена</p>
                 </div>
             </div>
@@ -120,7 +67,7 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
     </div>
     <div class="contentWrapper">
         <div id="formWrapper">
-            <form action="index.php" method="get">
+            <form method="get" action="php/session.php" id="mainForm">
                 <div class="centered" style="margin-bottom: 20px;">
                     <div class="button" style="margin-right: 20px;" id="areasWindowButton"
                         onClick='showModalWindow("areas", "")'>
@@ -232,182 +179,21 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
                             <th>Время</th>
                         </tr>
                     </thead>
-                    <?php
-                    if (isset($_SESSION["results"])) {
-                        foreach ($_SESSION["results"] as $result) {
-                            echo "<tr>";
-                            echo "<td>{$result["x"]}</td>";
-                            echo "<td>{$result["y"]}</td>";
-                            echo "<td>{$result["r"]}</td>";
-                            echo "<td>{$result["result"]}</td>";
-                            echo "<td>{$result["scriptTime"]}</td>";
-                            echo "<td>{$result["time"]}</td>";
-                            echo "</tr>";
-                        }
-                    }
-                    ?>
+                    <tbody id="resultsContainer">
+                    </tbody>
                 </table>
             </div>
             <div class="button inactiveButton" id="clearButton" onclick='showModalWindow("clearTable", "")'>
                 <div class="icon" style="background-image: url(icons/trash.png);"></div>
                 <p>Очистить результаты</p>
             </div>
-            <script>
-                const table = document.getElementById('resultsTable');
-                const rows = table.getElementsByTagName('tr');
-
-                if (rows.length > 1) {
-                    document.getElementById("clearButton").classList.remove("inactiveButton");
-                    document.getElementById("emptyTableMessage").style.display = "none";
-                    document.getElementById("resultsTable").style.display = "block";
-                } else {
-                    document.getElementById("clearButton").classList.add("inactiveButton");
-                    document.getElementById("emptyTableMessage").style.display = "block";
-                    document.getElementById("resultsTable").style.display = "none";
-                }
-            </script>
         </div>
         <!--<div class="imageWrapper" style="background-image: url(images/areas.png);"></div>-->
         <div id="timeBox">
             <div class="icon" style="background-image: url(icons/clock.png);"></div>
-            <p id="currentTime">
-                <?php echo date('H:i:s'); ?>
-            </p>
+            <p id="currentTime"></p>
         </div>
-        <script>
-            $(window).scroll(function () {
-                var scroll = $(window).scrollTop();
-                if (scroll > 20) {
-                    $('#header').addClass('wideHeader');
-                } else {
-                    $('#header').removeClass('wideHeader');
-                }
-            }
 
-            );
-
-            function closeModalWindow(ID) {
-                document.getElementById(ID.substring(0, ID.length - 6)).classList.add('closedModalWindow');
-                document.getElementById("modalWindowBack").classList.add("hiddenModalBack");
-            }
-
-            function showModalWindow(ID, message) {
-                $('#errorMessage').html(message);
-                document.getElementById(ID + "Window").classList.remove('closedModalWindow');
-                document.getElementById("modalWindowBack").classList.remove("hiddenModalBack");
-            }
-
-            document.querySelector("form").addEventListener("submit", function (event) {
-                var xInput = document.getElementById("x");
-                var yInput = document.getElementById("y");
-                var rInput = document.getElementById("r");
-
-
-                /*if (xInput.value == '' && yInput.value == '' && zInput.value == '') {
-                    event.preventDefault();
-                    showModalWindow("incorrectValue", "Пожалуйста, введите необходимые значения.");
-                }*/
-
-                if (xInput == null) {
-                    event.preventDefault();
-                    showModalWindow("incorrectValue", "Пожалуйста, выберите значение для X.");
-                } else if (parseFloat(yInput.value) > 3 || parseFloat(yInput.value) < -3) {
-                    event.preventDefault();
-                    showModalWindow("incorrectValue", "Пожалуйста, введите значение для Y от -3 до 3.");
-                } else if (rInput == "") {
-                    event.preventDefault();
-                    showModalWindow("incorrectValue", "Пожалуйста, выберите значение для R.");
-                } else if (!isValid(xInput.value) || !isValid(yInput.value) || (!isValid(rInput.value) && !isPositive(rInput.value))) {
-                    event.preventDefault();
-                    showModalWindow("incorrectValue", "Проверьте введённые данные.");
-                } else {
-                    document.getElementById("clearButton").classList.remove("inactiveButton");
-                }
-            });
-
-            function isValid(value) {
-                return !isNaN(parseFloat(value)) && isFinite(value) && value != null;
-            }
-
-            function isPositive(value) {
-                return (value > 0);
-            }
-
-            function clearTable() {
-                window.location.href = 'index.php?clear=true';
-            }
-
-            function checkAddress(checkbox) {
-                if (checkbox.checked == true) {
-                    var checkboxes = document.getElementsByClassName('checkbox');
-                    for (var i = 0; i < checkboxes.length; i++) {
-                        checkboxes[i].checked = false;
-                        document.getElementById('x').value = "";
-                    }
-                    checkbox.checked = true;
-                    document.getElementById('x').value = checkbox.value;
-                }
-
-                if (checkbox.checked == false) {
-                    document.getElementById('x').value = "";
-                }
-            }
-
-            function unblurNumber() {
-                $('#rVal').removeClass('blurred');
-            }
-
-            function rUpdate(value) {
-                document.getElementById('r').value = value;
-                $('#rVal').addClass('blurred');
-                setTimeout(() => $('#rVal').html(value), 100);
-                setTimeout(() => $('#rVal').removeClass('blurred'), 200);
-            }
-
-            const input = document.querySelector('#y');
-
-            input.addEventListener('input', function () {
-                const value = input.value;
-
-                if (!value) {
-                    input.classList.remove('valid', 'invalid');
-                } else if (isNaN(+(value))) {
-                    input.classList.add('invalid');
-                    input.classList.remove('valid');
-                } else if (+(value) >= -3 && +(value) <= 3) {
-                    input.classList.add('valid');
-                    input.classList.remove('invalid');
-                } else {
-                    input.classList.add('invalid');
-                    input.classList.remove('valid');
-                }
-            });
-
-
-            function checkTime(i) {
-                if (i < 10) {
-                    i = "0" + i;
-                }
-                return i;
-            }
-
-            function startTime() {
-                var today = new Date();
-                var h = today.getHours();
-                var m = today.getMinutes();
-                var s = today.getSeconds();
-                m = checkTime(m);
-                s = checkTime(s);
-                document.getElementById('currentTime').innerHTML = h + ":" + m + ":" + s;
-                t = setTimeout(function () {
-                    startTime()
-                }, 500);
-            }
-
-            startTime();
-
-
-        </script>
     </div>
     <style>
         body {
@@ -560,6 +346,7 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
         .fixedHead {
             table-layout: fixed;
             border-collapse: collapse;
+            transition: .2s;
         }
 
         .fixedHead thead {
@@ -968,7 +755,12 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
             filter: blur(6px);
             opacity: 0.2;
             transform: scale(0.5);
-            transition: filter 100ms 0ms, opacity 50ms 50ms, transform 100ms 0ms;
+            transition: filter 200ms 0ms, opacity 50ms 50ms, transform 100ms 0ms;
+        }
+
+        .updating{
+            opacity: 0.6;
+            transition: filter 0ms 0ms, opacity 50ms 0ms;
         }
 
         #rVal {
@@ -1026,7 +818,7 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
                 position: relative;
             }
 
-            #buttonsContainer{
+            #buttonsContainer {
                 padding: 0px 10px 0px 20px;
                 border-radius: 0px 10px 10px 0px;
                 position: relative;
@@ -1076,6 +868,7 @@ if (isset($_GET['clear']) && $_GET['clear'] === 'true') {
 
         }
     </style>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
